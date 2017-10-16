@@ -43,8 +43,6 @@ for (i in 1: length(IN.FILES)){
                         (ind.data$Running.SubTrial.=="List2" &  ind.data$Screen1_Obj_Colour=="red" & ind.data$Screen_1_Obj_Pos== "e"), "C","I")
  
  summary.vesper$IN.M[i] <- mean(ind.data$Subject1RT)
-
- 
  summary.vesper$IN.SD[i] <- sd(na.omit(ind.data$Subject1RT))
  summary.vesper$IN.C.M[i]<- mean(na.omit(ind.data$Subject1RT[ind.data$Type=="C"]))
  summary.vesper$IN.C.SD[i]<- sd(na.omit(ind.data$Subject1RT[ind.data$Type=="C"]))
@@ -53,5 +51,33 @@ for (i in 1: length(IN.FILES)){
  
 }
 
+dualu.data<- read.csv(paste("Dual1/",DU.FILES[1],sep = ""))
+dualu.data<- dualu.data[(dualu.data$Running.SubTrial.=="CM1Trails" | dualu.data$Running.SubTrial. == "CM2Trials") & dualu.data$Subject1ACC==1 & dualu.data$Subject2ACC==1,]
+dualu.data$Subject1RT<- as.numeric(dualu.data$Subject1RT)
+dualu.data$Subject2RT<- as.numeric(dualu.data$Subject2RT)
 
+dualu.data$Type1<- ifelse((dualu.data$Running.SubTrial.=="CM1Trails" & dualu.data$Screen1_Obj_Colour=="blue" & dualu.data$Screen_1_Obj_Pos== "e") | 
+                         (dualu.data$Running.SubTrial.=="CM1Trails" &  dualu.data$Screen1_Obj_Colour=="red" & dualu.data$Screen_1_Obj_Pos== "w") |
+                         (dualu.data$Running.SubTrial.=="CM2Trials" & dualu.data$Screen1_Obj_Colour=="blue" & dualu.data$Screen_1_Obj_Pos== "w") | 
+                         (dualu.data$Running.SubTrial.=="CM2Trials" &  dualu.data$Screen1_Obj_Colour=="red" & dualu.data$Screen_1_Obj_Pos== "e"), "C","I")
+
+dualu.data$Type2<- ifelse((dualu.data$Running.SubTrial.=="CM1Trails" & dualu.data$Screen2_Obj_Colour=="blue" & dualu.data$Screen_2_Obj_Pos== "e") | 
+                            (dualu.data$Running.SubTrial.=="CM1Trails" &  dualu.data$Screen2_Obj_Colour=="red" & dualu.data$Screen_2_Obj_Pos== "w") |
+                            (dualu.data$Running.SubTrial.=="CM2Trials" & dualu.data$Screen2_Obj_Colour=="blue" & dualu.data$Screen_2_Obj_Pos== "w") | 
+                            (dualu.data$Running.SubTrial.=="CM2Trials" &  dualu.data$Screen2_Obj_Colour=="red" & dualu.data$Screen_2_Obj_Pos== "e"), "C","I")
+
+
+   
+   summary.vesper$DU.M[1] <- mean(dualu.data$Subject1RT)
+   summary.vesper$DU.SD[1] <- sd(na.omit(dualu.data$Subject1RT))
+   summary.vesper$DU.M[2] <- mean(dualu.data$Subject2RT)
+   summary.vesper$DU.SD[2] <- sd(na.omit(dualu.data$Subject2RT))
+   summary.vesper$DU.C.M[1]<- mean(na.omit(dualu.data$Subject1RT[dualu.data$Type1=="C"]))
+   summary.vesper$DU.C.SD[1]<- sd(na.omit(dualu.data$Subject1RT[dualu.data$Type1=="C"]))
+   summary.vesper$DU.C.M[2]<- mean(na.omit(dualu.data$Subject2RT[dualu.data$Type2=="C"]))
+   summary.vesper$DU.C.SD[2]<- sd(na.omit(dualu.data$Subject2RT[dualu.data$Type2=="C"]))
+   summary.vesper$DU.I.M[1]<- mean(na.omit(dualu.data$Subject1RT[dualu.data$Type1=="I"]))
+   summary.vesper$DU.I.SD[1]<- sd(na.omit(dualu.data$Subject1RT[dualu.data$Type1=="I"]))
+   summary.vesper$DU.I.M[2]<- mean(na.omit(dualu.data$Subject2RT[dualu.data$Type2=="I"]))
+   summary.vesper$DU.I.SD[2]<- sd(na.omit(dualu.data$Subject2RT[dualu.data$Type2=="I"]))
  

@@ -200,3 +200,10 @@ for (i in 1:length(DI.FILES)){
                                                                  duali.data$Subject2RT< m1+outlier_sds*s1]))
   
 }
+
+t.test(summary.vesper$IN.C.M,summary.vesper$IN.I.M,paired=T)
+t.test(summary.vesper$DU.C.M,summary.vesper$DU.I.M,paired=T)
+t.test(summary.vesper$DI.C.M,summary.vesper$DI.I.M,paired=T)
+t.test(summary.vesper$IN.SD,summary.vesper$DU.SD,paired=T)
+t.test(summary.vesper$IN.SD,summary.vesper$DI.SD,paired=T)
+

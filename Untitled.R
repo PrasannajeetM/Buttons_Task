@@ -1,6 +1,9 @@
 outlier_sds = 3
 
-setwd("~/Documents/GitHub/Buttons_Task/")
+#setwd("~/Documents/GitHub/Buttons_Task/")
+
+setwd("C:/Users/Prasannajeet/Desktop/Buttons_Task");
+
 
 library("lsr")
 library("ggplot2")
@@ -200,6 +203,10 @@ for (i in 1:length(DI.FILES)){
                                                                  duali.data$Subject2RT< m1+outlier_sds*s1]))
   
 }
+
+
+library(foreign)
+write.foreign(summary.vesper, "C:/Users/Prasannajeet/Desktop/summary.vesper.txt", "C:/Users/Prasannajeet/Desktop/summary.vesper.sav",   package="SPSS")
 
 t.test(summary.vesper$IN.C.M,summary.vesper$IN.I.M,paired=T)
 t.test(summary.vesper$DU.C.M,summary.vesper$DU.I.M,paired=T)

@@ -1,8 +1,8 @@
 outlier_sds = 3
 
-#setwd("~/Documents/GitHub/Buttons_Task/")
+setwd("~/Documents/GitHub/Buttons_Task/")
 
-setwd("C:/Users/Prasannajeet/Desktop/Buttons_Task");
+#setwd("C:/Users/Prasannajeet/Desktop/Buttons_Task");
 
 
 library("lsr")
@@ -32,7 +32,19 @@ summary.vesper<- data.frame(PP=c(rep(as.numeric(""),length(IN.FILES))),
                           DI.C.M=c(rep(as.numeric(""),length(IN.FILES))),
                           DI.C.SD=c(rep(as.numeric(""),length(IN.FILES))),
                           DI.I.M=c(rep(as.numeric(""),length(IN.FILES))),
-                          DI.I.SD=c(rep(as.numeric(""),length(IN.FILES))))
+                          DI.I.SD=c(rep(as.numeric(""),length(IN.FILES))),
+                          DIFF.IN.DU.M = c(rep(as.numeric(""),length(IN.FILES))),
+                          DIFF.DU.DI.M = c(rep(as.numeric(""),length(IN.FILES))),
+                          DIFF.IN.DU.SD = c(rep(as.numeric(""),length(IN.FILES))),
+                          DIFF.DU.DI.SD = c(rep(as.numeric(""),length(IN.FILES))),
+                          DIFF.IN.DU.C.M = c(rep(as.numeric(""),length(IN.FILES))),
+                          DIFF.DU.DI.C.M = c(rep(as.numeric(""),length(IN.FILES))),
+                          DIFF.IN.DU.C.SD = c(rep(as.numeric(""),length(IN.FILES))),
+                          DIFF.DU.DI.C.SD = c(rep(as.numeric(""),length(IN.FILES))),
+                          DIFF.IN.DU.I.M = c(rep(as.numeric(""),length(IN.FILES))),
+                          DIFF.DU.DI.I.M = c(rep(as.numeric(""),length(IN.FILES))),
+                          DIFF.IN.DU.I.SD = c(rep(as.numeric(""),length(IN.FILES))),
+                          DIFF.DU.DI.I.SD = c(rep(as.numeric(""),length(IN.FILES))))
 
 IN.FILES=  list.files(c("Individual"), pattern="*.csv")
 DU.FILES= list.files(c("Dual1"), pattern="*.csv")
@@ -202,11 +214,39 @@ for (i in 1:length(DI.FILES)){
                                                                  duali.data$Subject2RT> m1-outlier_sds*s1 &
                                                                  duali.data$Subject2RT< m1+outlier_sds*s1]))
   
+  summary.vesper$DIFF.DU.DI.M[x]= summary.vesper$DU.M[x] - summary.vesper$DI.M[x]
+  summary.vesper$DIFF.DU.DI.SD[x]= summary.vesper$DU.SD[x] - summary.vesper$DI.SD[x]
+  summary.vesper$DIFF.DU.DI.M[y]= summary.vesper$DU.M[y] - summary.vesper$DI.M[y]
+  summary.vesper$DIFF.DU.DI.SD[y]= summary.vesper$DU.SD[y] - summary.vesper$DI.SD[y]
+  summary.vesper$DIFF.DU.DI.C.M[x]= summary.vesper$DU.C.M[x] - summary.vesper$DI.C.M[x]
+  summary.vesper$DIFF.DU.DI.C.SD[x]= summary.vesper$DU.C.SD[x] - summary.vesper$DI.C.SD[x]
+  summary.vesper$DIFF.DU.DI.C.M[y]= summary.vesper$DU.C.M[y] - summary.vesper$DI.C.M[y]
+  summary.vesper$DIFF.DU.DI.C.SD[y]= summary.vesper$DU.C.SD[y] - summary.vesper$DI.C.SD[y]
+  summary.vesper$DIFF.DU.DI.I.M[x]= summary.vesper$DU.I.M[x] - summary.vesper$DI.I.M[x]
+  summary.vesper$DIFF.DU.DI.I.SD[x]= summary.vesper$DU.I.SD[x] - summary.vesper$DI.I.SD[x]
+  summary.vesper$DIFF.DU.DI.I.M[y]= summary.vesper$DU.I.M[y] - summary.vesper$DI.I.M[y]
+  summary.vesper$DIFF.DU.DI.I.SD[y]= summary.vesper$DU.I.SD[y] - summary.vesper$DI.I.SD[y]
+  
+  summary.vesper$DIFF.IN.DU.M[x]= summary.vesper$IN.M[x] - summary.vesper$DU.M[x]
+  summary.vesper$DIFF.IN.DU.SD[x]= summary.vesper$IN.SD[x] - summary.vesper$DU.SD[x]
+  summary.vesper$DIFF.IN.DU.M[y]= summary.vesper$IN.M[y] - summary.vesper$DU.M[y]
+  summary.vesper$DIFF.IN.DU.SD[y]= summary.vesper$IN.SD[y] - summary.vesper$DU.SD[y]
+  summary.vesper$DIFF.IN.DU.C.M[x]= summary.vesper$IN.C.M[x] - summary.vesper$DU.C.M[x]
+  summary.vesper$DIFF.IN.DU.C.SD[x]= summary.vesper$IN.C.SD[x] - summary.vesper$DU.C.SD[x]
+  summary.vesper$DIFF.IN.DU.C.M[y]= summary.vesper$IN.C.M[y] - summary.vesper$DU.C.M[y]
+  summary.vesper$DIFF.IN.DU.C.SD[y]= summary.vesper$IN.C.SD[y] - summary.vesper$DU.C.SD[y]
+  summary.vesper$DIFF.IN.DU.I.M[x]= summary.vesper$IN.I.M[x] - summary.vesper$DU.I.M[x]
+  summary.vesper$DIFF.IN.DU.I.SD[x]= summary.vesper$IN.I.SD[x] - summary.vesper$DU.I.SD[x]
+  summary.vesper$DIFF.IN.DU.I.M[y]= summary.vesper$IN.I.M[y] - summary.vesper$DU.I.M[y]
+  summary.vesper$DIFF.IN.DU.I.SD[y]= summary.vesper$IN.I.SD[y] - summary.vesper$DU.I.SD[y]
+  
 }
 
 
 library(foreign)
 write.foreign(summary.vesper, "C:/Users/Prasannajeet/Desktop/summary.vesper.txt", "C:/Users/Prasannajeet/Desktop/summary.vesper.sav",   package="SPSS")
+
+write.csv(summary.vesper, file="sv.csv")
 
 t.test(summary.vesper$IN.C.M,summary.vesper$IN.I.M,paired=T)
 t.test(summary.vesper$DU.C.M,summary.vesper$DU.I.M,paired=T)

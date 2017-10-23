@@ -58,7 +58,16 @@ for (i in 1: length(IN.FILES)){
  
  ind.data<- read.csv(paste("Individual/",IN.FILES[i],sep = ""))
  ind.data<- ind.data[(ind.data$Running.SubTrial.=="b1trails1" | ind.data$Running.SubTrial. == "List2") & ind.data$Subject1ACC==1,]
- ind.data$Subject1RT<- as.numeric(ind.data$Subject1RT)
+ # ind.data$Subject1RT<- as.integer(ind.data$Subject1RT)
+ 
+ '
+ foo = ind.data$Subject1RT
+ bar = as.numeric(foo)
+ ind.data$Subject1RT = bar
+ '
+ 
+ind.data$Subject1RT<- as.numeric(as.character(ind.data$Subject1RT))
+ 
  
  ind.data$Type<- ifelse((ind.data$Running.SubTrial.=="b1trails1" & ind.data$Screen1_Obj_Colour=="blue" & ind.data$Screen_1_Obj_Pos== "e") | 
                         (ind.data$Running.SubTrial.=="b1trails1" &  ind.data$Screen1_Obj_Colour=="red" & ind.data$Screen_1_Obj_Pos== "w") |
@@ -97,8 +106,10 @@ x<-as.numeric(match(substr(name,1,3), summary.vesper$PP))
 y<-as.numeric(match(substr(name,4,6), summary.vesper$PP))
 
 dualu.data<- dualu.data[(dualu.data$Running.SubTrial.=="CM1Trails" | dualu.data$Running.SubTrial. == "CM2Trials") & dualu.data$Subject1ACC==1 & dualu.data$Subject2ACC==1,]
-dualu.data$Subject1RT<- as.numeric(dualu.data$Subject1RT)
-dualu.data$Subject2RT<- as.numeric(dualu.data$Subject2RT)
+
+
+dualu.data$Subject1RT<- as.numeric(as.character(dualu.data$Subject1RT))
+dualu.data$Subject2RT<- as.numeric(as.character(dualu.data$Subject2RT))
 
 dualu.data$Type1<- ifelse((dualu.data$Running.SubTrial.=="CM1Trails" & dualu.data$Screen1_Obj_Colour=="blue" & dualu.data$Screen_1_Obj_Pos== "e") | 
                          (dualu.data$Running.SubTrial.=="CM1Trails" &  dualu.data$Screen1_Obj_Colour=="red" & dualu.data$Screen_1_Obj_Pos== "w") |
@@ -162,8 +173,8 @@ for (i in 1:length(DI.FILES)){
   y<-as.numeric(match(substr(name,4,6), summary.vesper$PP))
   
   duali.data<- duali.data[(duali.data$Running.SubTrial.=="CM1Trails" | duali.data$Running.SubTrial. == "CM2Trials") & duali.data$Subject1ACC==1 & duali.data$Subject2ACC==1,]
-  duali.data$Subject1RT<- as.numeric(duali.data$Subject1RT)
-  duali.data$Subject2RT<- as.numeric(duali.data$Subject2RT)
+  duali.data$Subject1RT<- as.numeric(as.character(duali.data$Subject1RT))
+  duali.data$Subject2RT<- as.numeric(as.character(duali.data$Subject2RT))
   
   duali.data$Type1<- ifelse((duali.data$Running.SubTrial.=="CM1Trails" & duali.data$Screen1_Obj_Colour=="blue" & duali.data$Screen_1_Obj_Pos== "e") | 
                               (duali.data$Running.SubTrial.=="CM1Trails" &  duali.data$Screen1_Obj_Colour=="red" & duali.data$Screen_1_Obj_Pos== "w") |

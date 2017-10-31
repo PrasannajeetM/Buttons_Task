@@ -360,17 +360,30 @@ t.test(summary.vesper$IN.SD,summary.vesper$DU.SD,paired=T)
 t.test(summary.vesper$IN.SD,summary.vesper$DI.SD,paired=T)
 
 cor.test(summary.vesper$DU.M, summary.vesper$DU.SD, method = c("pearson"))
+plot(summary.vesper$DU.C.M,summary.vesper$DU.C.SD)
+abline(lm(summary.vesper$DU.C.SD~summary.vesper$DU.C.M))
+
+
+cor.test(summary.vesper$DU.SD, summary.vesper$DU.ASY.M, method = c("pearson"))
+plot(summary.vesper$DU.ASY.M,summary.vesper$DU.SD)
+abline(lm(summary.vesper$DU.SD~summary.vesper$DU.ASY.M))
+
+
 cor.test(summary.vesper$DI.M, summary.vesper$DI.SD, method = c("pearson"))
+plot(summary.vesper$DI.M,summary.vesper$DI.SD)
+abline(lm(summary.vesper$DI.SD~summary.vesper$DI.M))
+
 cor.test(summary.vesper$DU.C.M, summary.vesper$DI.C.SD, method = c("pearson"))
 cor.test(summary.vesper$DU.I.M, summary.vesper$DI.I.SD, method = c("pearson"))
 cor.test(summary.vesper$DU.C.M, summary.vesper$DI.C.SD, method = c("pearson"))
 
 
-plot(summary.vesper$DU.C.M,summary.vesper$DU.C.SD)
-abline(lm(summary.vesper$DU.C.SD~summary.vesper$DU.C.M))
 
 cor.test(summary.vesper$IN.C.M, summary.vesper$DI.C.M, method = c("pearson"))
                                       
 
-st<- summary.vesper[, c(8,9,20)]
-pcor(st, method="pearson")
+DF.DU<- summary.vesper[, c(8,9,20)]
+pcor(DF.DU, method="pearson")
+
+DF.DI<- summary.vesper[, c(14,15,26)]
+pcor(DF.DI, method="pearson")

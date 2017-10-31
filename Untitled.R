@@ -33,17 +33,36 @@ summary.vesper<- data.frame(PP=c(rep(as.numeric(""),length(IN.FILES))),
                           DI.C.SD=c(rep(as.numeric(""),length(IN.FILES))),
                           DI.I.M=c(rep(as.numeric(""),length(IN.FILES))),
                           DI.I.SD=c(rep(as.numeric(""),length(IN.FILES))),
+                          DU.ASY.M=c(rep(as.numeric(""),length(IN.FILES))),
+                          DU.ASY.SD=c(rep(as.numeric(""),length(IN.FILES))),
+                          DU.ASY.C.M=c(rep(as.numeric(""),length(IN.FILES))),
+                          DU.ASY.C.SD=c(rep(as.numeric(""),length(IN.FILES))),
+                          DU.ASY.I.M=c(rep(as.numeric(""),length(IN.FILES))),
+                          DU.ASY.I.SD=c(rep(as.numeric(""),length(IN.FILES))),
+                          DI.ASY.M=c(rep(as.numeric(""),length(IN.FILES))),
+                          DI.ASY.SD=c(rep(as.numeric(""),length(IN.FILES))),
+                          DI.ASY.C.M=c(rep(as.numeric(""),length(IN.FILES))),
+                          DI.ASY.C.SD=c(rep(as.numeric(""),length(IN.FILES))),
+                          DI.ASY.I.M=c(rep(as.numeric(""),length(IN.FILES))),
+                          DI.ASY.I.SD=c(rep(as.numeric(""),length(IN.FILES))),
+                                                    
                           DIFF.IN.DU.M = c(rep(as.numeric(""),length(IN.FILES))),
+                          DIFF.IN.DI.M = c(rep(as.numeric(""),length(IN.FILES))),
                           DIFF.DU.DI.M = c(rep(as.numeric(""),length(IN.FILES))),
-                          DIFF.IN.DU.SD = c(rep(as.numeric(""),length(IN.FILES))),
+                          DIFF.IN.DU.SD = c(rep(as.numeric(""),length(IN.FILES))),  
+                          DIFF.IN.DI.SD = c(rep(as.numeric(""),length(IN.FILES))),
                           DIFF.DU.DI.SD = c(rep(as.numeric(""),length(IN.FILES))),
-                          DIFF.IN.DU.C.M = c(rep(as.numeric(""),length(IN.FILES))),
+                          DIFF.IN.DU.C.M = c(rep(as.numeric(""),length(IN.FILES))),                          
+                          DIFF.IN.DI.C.M = c(rep(as.numeric(""),length(IN.FILES))),
                           DIFF.DU.DI.C.M = c(rep(as.numeric(""),length(IN.FILES))),
                           DIFF.IN.DU.C.SD = c(rep(as.numeric(""),length(IN.FILES))),
+                          DIFF.IN.DI.C.SD = c(rep(as.numeric(""),length(IN.FILES))),
                           DIFF.DU.DI.C.SD = c(rep(as.numeric(""),length(IN.FILES))),
                           DIFF.IN.DU.I.M = c(rep(as.numeric(""),length(IN.FILES))),
+                          DIFF.IN.DI.I.M = c(rep(as.numeric(""),length(IN.FILES))),
                           DIFF.DU.DI.I.M = c(rep(as.numeric(""),length(IN.FILES))),
                           DIFF.IN.DU.I.SD = c(rep(as.numeric(""),length(IN.FILES))),
+                          DIFF.IN.DI.I.SD = c(rep(as.numeric(""),length(IN.FILES))),
                           DIFF.DU.DI.I.SD = c(rep(as.numeric(""),length(IN.FILES))))
 
 IN.FILES=  list.files(c("Individual"), pattern="*.csv")
@@ -240,24 +259,99 @@ for (i in 1:length(DI.FILES)){
   
   summary.vesper$DIFF.IN.DU.M[x]= summary.vesper$IN.M[x] - summary.vesper$DU.M[x]
   summary.vesper$DIFF.IN.DU.SD[x]= summary.vesper$IN.SD[x] - summary.vesper$DU.SD[x]
+    summary.vesper$DIFF.IN.DI.M[x]= summary.vesper$IN.M[x] - summary.vesper$DI.M[x]
+  summary.vesper$DIFF.IN.DI.SD[x]= summary.vesper$IN.SD[x] - summary.vesper$DI.SD[x]
+  
   summary.vesper$DIFF.IN.DU.M[y]= summary.vesper$IN.M[y] - summary.vesper$DU.M[y]
   summary.vesper$DIFF.IN.DU.SD[y]= summary.vesper$IN.SD[y] - summary.vesper$DU.SD[y]
+  
+  summary.vesper$DIFF.IN.DI.M[y]= summary.vesper$IN.M[y] - summary.vesper$DI.M[y]
+  summary.vesper$DIFF.IN.DI.SD[y]= summary.vesper$IN.SD[y] - summary.vesper$DI.SD[y]
+  
   summary.vesper$DIFF.IN.DU.C.M[x]= summary.vesper$IN.C.M[x] - summary.vesper$DU.C.M[x]
   summary.vesper$DIFF.IN.DU.C.SD[x]= summary.vesper$IN.C.SD[x] - summary.vesper$DU.C.SD[x]
+  summary.vesper$DIFF.IN.DI.C.M[x]= summary.vesper$IN.C.M[x] - summary.vesper$DI.C.M[x]
+  summary.vesper$DIFF.IN.DI.C.SD[x]= summary.vesper$IN.C.SD[x] - summary.vesper$DI.C.SD[x]
+  summary.vesper$DIFF.IN.DI.C.M[y]= summary.vesper$IN.C.M[y] - summary.vesper$DI.C.M[y]
+  summary.vesper$DIFF.IN.DI.C.SD[y]= summary.vesper$IN.C.SD[y] - summary.vesper$DI.C.SD[y]
   summary.vesper$DIFF.IN.DU.C.M[y]= summary.vesper$IN.C.M[y] - summary.vesper$DU.C.M[y]
   summary.vesper$DIFF.IN.DU.C.SD[y]= summary.vesper$IN.C.SD[y] - summary.vesper$DU.C.SD[y]
+  
+  summary.vesper$DIFF.IN.DI.C.M[y]= summary.vesper$IN.C.M[y] - summary.vesper$DI.C.M[y]
+  summary.vesper$DIFF.IN.DI.C.SD[y]= summary.vesper$IN.C.SD[y] - summary.vesper$DI.C.SD[y]
   summary.vesper$DIFF.IN.DU.I.M[x]= summary.vesper$IN.I.M[x] - summary.vesper$DU.I.M[x]
   summary.vesper$DIFF.IN.DU.I.SD[x]= summary.vesper$IN.I.SD[x] - summary.vesper$DU.I.SD[x]
+  summary.vesper$DIFF.IN.DI.I.M[x]= summary.vesper$IN.I.M[x] - summary.vesper$DI.I.M[x]
+  summary.vesper$DIFF.IN.DI.I.SD[x]= summary.vesper$IN.I.SD[x] - summary.vesper$DI.I.SD[x]
+  
   summary.vesper$DIFF.IN.DU.I.M[y]= summary.vesper$IN.I.M[y] - summary.vesper$DU.I.M[y]
   summary.vesper$DIFF.IN.DU.I.SD[y]= summary.vesper$IN.I.SD[y] - summary.vesper$DU.I.SD[y]
+  
+  
+  summary.vesper$DIFF.IN.DI.I.M[y]= summary.vesper$IN.I.M[y] - summary.vesper$DI.I.M[y]
+  summary.vesper$DIFF.IN.DI.I.SD[y]= summary.vesper$IN.I.SD[y] - summary.vesper$DI.I.SD[y]
+  
+  
+  summary.vesper$DU.ASY.M[x]= summary.vesper$DU.M[x] - summary.vesper$DU.M[y]
+  summary.vesper$DU.ASY.SD[y]= summary.vesper$DU.SD[y] - summary.vesper$DU.SD[x]
+  
+  summary.vesper$DU.ASY.C.M[x]= summary.vesper$DU.C.M[x] - summary.vesper$DU.C.M[y]
+  summary.vesper$DU.ASY.C.M[y]= summary.vesper$DU.C.M[y] - summary.vesper$DU.C.M[x]
+  
+  summary.vesper$DU.ASY.C.SD[x]= summary.vesper$DU.C.SD[x] - summary.vesper$DU.C.SD[y]
+  summary.vesper$DU.ASY.C.SD[y]= summary.vesper$DU.C.SD[y] - summary.vesper$DU.C.SD[x]
+  
+  summary.vesper$DU.ASY.I.M[x]= summary.vesper$DU.I.M[x] - summary.vesper$DU.I.M[y]
+  summary.vesper$DU.ASY.I.SD[y]= summary.vesper$DU.I.SD[y] - summary.vesper$DU.I.SD[x]
+  
+  
+  summary.vesper$DI.ASY.M[x]= summary.vesper$DI.M[x] - summary.vesper$DI.M[y]
+  summary.vesper$DI.ASY.SD[y]= summary.vesper$DI.SD[y] - summary.vesper$DI.SD[x]
+  
+  summary.vesper$DI.ASY.C.M[x]= summary.vesper$DI.C.M[x] - summary.vesper$DI.C.M[y]
+  summary.vesper$DI.ASY.C.M[y]= summary.vesper$DI.C.M[y] - summary.vesper$DI.C.M[x]
+  
+  summary.vesper$DI.ASY.C.SD[x]= summary.vesper$DI.C.SD[x] - summary.vesper$DI.C.SD[y]
+  summary.vesper$DI.ASY.C.SD[y]= summary.vesper$DI.C.SD[y] - summary.vesper$DI.C.SD[x]
+  
+  summary.vesper$DI.ASY.I.M[x]= summary.vesper$DI.I.M[x] - summary.vesper$DI.I.M[y]
+  summary.vesper$DI.ASY.I.SD[y]= summary.vesper$DI.I.SD[y] - summary.vesper$DI.I.SD[x]
+  
+  
+  
+  
+  summary.vesper$DU.ASY.M[y]= summary.vesper$DU.M[y] - summary.vesper$DU.M[x]
+  summary.vesper$DU.ASY.SD[x]= summary.vesper$DU.SD[x] - summary.vesper$DU.SD[y]
+  
+  summary.vesper$DU.ASY.C.M[y]= summary.vesper$DU.C.M[y] - summary.vesper$DU.C.M[x]
+  summary.vesper$DU.ASY.C.M[x]= summary.vesper$DU.C.M[x] - summary.vesper$DU.C.M[y]
+  
+  summary.vesper$DU.ASY.C.SD[y]= summary.vesper$DU.C.SD[y] - summary.vesper$DU.C.SD[x]
+  summary.vesper$DU.ASY.C.SD[x]= summary.vesper$DU.C.SD[x] - summary.vesper$DU.C.SD[y]
+  
+  summary.vesper$DU.ASY.I.M[y]= summary.vesper$DU.I.M[y] - summary.vesper$DU.I.M[x]
+  summary.vesper$DU.ASY.I.SD[x]= summary.vesper$DU.I.SD[x] - summary.vesper$DU.I.SD[y]
+  
+  
+  summary.vesper$DI.ASY.M[y]= summary.vesper$DI.M[y] - summary.vesper$DI.M[x]
+  summary.vesper$DI.ASY.SD[x]= summary.vesper$DI.SD[x] - summary.vesper$DI.SD[y]
+  
+  summary.vesper$DI.ASY.C.M[y]= summary.vesper$DI.C.M[y] - summary.vesper$DI.C.M[x]
+  summary.vesper$DI.ASY.C.M[x]= summary.vesper$DI.C.M[x] - summary.vesper$DI.C.M[y]
+  
+  summary.vesper$DI.ASY.C.SD[y]= summary.vesper$DI.C.SD[y] - summary.vesper$DI.C.SD[x]
+  summary.vesper$DI.ASY.C.SD[x]= summary.vesper$DI.C.SD[x] - summary.vesper$DI.C.SD[y]
+  
+  summary.vesper$DI.ASY.I.M[y]= summary.vesper$DI.I.M[y] - summary.vesper$DI.I.M[x]
+  summary.vesper$DI.ASY.I.SD[x]= summary.vesper$DI.I.SD[x] - summary.vesper$DI.I.SD[y]
+  
+  
+  
+
   
 }
 
 
-library(foreign)
-write.foreign(summary.vesper, "C:/Users/Prasannajeet/Desktop/summary.vesper.txt", "C:/Users/Prasannajeet/Desktop/summary.vesper.sav",   package="SPSS")
-
-write.csv(summary.vesper, file="sv.csv")
 
 t.test(summary.vesper$IN.C.M,summary.vesper$IN.I.M,paired=T)
 t.test(summary.vesper$DU.C.M,summary.vesper$DU.I.M,paired=T)
@@ -265,3 +359,18 @@ t.test(summary.vesper$DI.C.M,summary.vesper$DI.I.M,paired=T)
 t.test(summary.vesper$IN.SD,summary.vesper$DU.SD,paired=T)
 t.test(summary.vesper$IN.SD,summary.vesper$DI.SD,paired=T)
 
+cor.test(summary.vesper$DU.M, summary.vesper$DU.SD, method = c("pearson"))
+cor.test(summary.vesper$DI.M, summary.vesper$DI.SD, method = c("pearson"))
+cor.test(summary.vesper$DU.C.M, summary.vesper$DI.C.SD, method = c("pearson"))
+cor.test(summary.vesper$DU.I.M, summary.vesper$DI.I.SD, method = c("pearson"))
+cor.test(summary.vesper$DU.C.M, summary.vesper$DI.C.SD, method = c("pearson"))
+
+
+plot(summary.vesper$DU.C.M,summary.vesper$DU.C.SD)
+abline(lm(summary.vesper$DU.C.SD~summary.vesper$DU.C.M))
+
+cor.test(summary.vesper$IN.C.M, summary.vesper$DI.C.M, method = c("pearson"))
+                                      
+
+st<- summary.vesper[, c(8,9,20)]
+pcor(st, method="pearson")

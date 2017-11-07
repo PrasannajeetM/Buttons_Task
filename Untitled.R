@@ -15,6 +15,7 @@ DU.FILES= list.files(c("Dual1"), pattern="*.csv")
 DI.FILES= list.files(c("Dual2"), pattern="*.csv")
 
 summary.vesper<- data.frame(PP=c(rep(as.numeric(""),length(IN.FILES))),
+                          
                           IN.M=c(rep(as.numeric(""),length(IN.FILES))),
                           IN.SD=c(rep(as.numeric(""),length(IN.FILES))),
                           IN.C.M=c(rep(as.numeric(""),length(IN.FILES))),
@@ -33,19 +34,14 @@ summary.vesper<- data.frame(PP=c(rep(as.numeric(""),length(IN.FILES))),
                           DI.C.SD=c(rep(as.numeric(""),length(IN.FILES))),
                           DI.I.M=c(rep(as.numeric(""),length(IN.FILES))),
                           DI.I.SD=c(rep(as.numeric(""),length(IN.FILES))),
+                          
                           DU.ASY.M=c(rep(as.numeric(""),length(IN.FILES))),
-                          DU.ASY.SD=c(rep(as.numeric(""),length(IN.FILES))),
                           DU.ASY.C.M=c(rep(as.numeric(""),length(IN.FILES))),
-                          DU.ASY.C.SD=c(rep(as.numeric(""),length(IN.FILES))),
                           DU.ASY.I.M=c(rep(as.numeric(""),length(IN.FILES))),
-                          DU.ASY.I.SD=c(rep(as.numeric(""),length(IN.FILES))),
                           DI.ASY.M=c(rep(as.numeric(""),length(IN.FILES))),
-                          DI.ASY.SD=c(rep(as.numeric(""),length(IN.FILES))),
                           DI.ASY.C.M=c(rep(as.numeric(""),length(IN.FILES))),
-                          DI.ASY.C.SD=c(rep(as.numeric(""),length(IN.FILES))),
                           DI.ASY.I.M=c(rep(as.numeric(""),length(IN.FILES))),
-                          DI.ASY.I.SD=c(rep(as.numeric(""),length(IN.FILES))),
-                                                    
+                                                                 
                           DIFF.IN.DU.M = c(rep(as.numeric(""),length(IN.FILES))),
                           DIFF.IN.DI.M = c(rep(as.numeric(""),length(IN.FILES))),
                           DIFF.DU.DI.M = c(rep(as.numeric(""),length(IN.FILES))),
@@ -293,57 +289,45 @@ for (i in 1:length(DI.FILES)){
   
   
   summary.vesper$DU.ASY.M[x]= summary.vesper$DU.M[x] - summary.vesper$DU.M[y]
-  summary.vesper$DU.ASY.SD[y]= summary.vesper$DU.SD[y] - summary.vesper$DU.SD[x]
+ 
   
   summary.vesper$DU.ASY.C.M[x]= summary.vesper$DU.C.M[x] - summary.vesper$DU.C.M[y]
   summary.vesper$DU.ASY.C.M[y]= summary.vesper$DU.C.M[y] - summary.vesper$DU.C.M[x]
   
-  summary.vesper$DU.ASY.C.SD[x]= summary.vesper$DU.C.SD[x] - summary.vesper$DU.C.SD[y]
-  summary.vesper$DU.ASY.C.SD[y]= summary.vesper$DU.C.SD[y] - summary.vesper$DU.C.SD[x]
-  
+ 
   summary.vesper$DU.ASY.I.M[x]= summary.vesper$DU.I.M[x] - summary.vesper$DU.I.M[y]
-  summary.vesper$DU.ASY.I.SD[y]= summary.vesper$DU.I.SD[y] - summary.vesper$DU.I.SD[x]
   
   
   summary.vesper$DI.ASY.M[x]= summary.vesper$DI.M[x] - summary.vesper$DI.M[y]
-  summary.vesper$DI.ASY.SD[y]= summary.vesper$DI.SD[y] - summary.vesper$DI.SD[x]
   
   summary.vesper$DI.ASY.C.M[x]= summary.vesper$DI.C.M[x] - summary.vesper$DI.C.M[y]
   summary.vesper$DI.ASY.C.M[y]= summary.vesper$DI.C.M[y] - summary.vesper$DI.C.M[x]
   
-  summary.vesper$DI.ASY.C.SD[x]= summary.vesper$DI.C.SD[x] - summary.vesper$DI.C.SD[y]
-  summary.vesper$DI.ASY.C.SD[y]= summary.vesper$DI.C.SD[y] - summary.vesper$DI.C.SD[x]
+ 
   
   summary.vesper$DI.ASY.I.M[x]= summary.vesper$DI.I.M[x] - summary.vesper$DI.I.M[y]
-  summary.vesper$DI.ASY.I.SD[y]= summary.vesper$DI.I.SD[y] - summary.vesper$DI.I.SD[x]
   
   
   
   
   summary.vesper$DU.ASY.M[y]= summary.vesper$DU.M[y] - summary.vesper$DU.M[x]
-  summary.vesper$DU.ASY.SD[x]= summary.vesper$DU.SD[x] - summary.vesper$DU.SD[y]
   
   summary.vesper$DU.ASY.C.M[y]= summary.vesper$DU.C.M[y] - summary.vesper$DU.C.M[x]
   summary.vesper$DU.ASY.C.M[x]= summary.vesper$DU.C.M[x] - summary.vesper$DU.C.M[y]
   
-  summary.vesper$DU.ASY.C.SD[y]= summary.vesper$DU.C.SD[y] - summary.vesper$DU.C.SD[x]
-  summary.vesper$DU.ASY.C.SD[x]= summary.vesper$DU.C.SD[x] - summary.vesper$DU.C.SD[y]
+  
   
   summary.vesper$DU.ASY.I.M[y]= summary.vesper$DU.I.M[y] - summary.vesper$DU.I.M[x]
-  summary.vesper$DU.ASY.I.SD[x]= summary.vesper$DU.I.SD[x] - summary.vesper$DU.I.SD[y]
   
   
   summary.vesper$DI.ASY.M[y]= summary.vesper$DI.M[y] - summary.vesper$DI.M[x]
-  summary.vesper$DI.ASY.SD[x]= summary.vesper$DI.SD[x] - summary.vesper$DI.SD[y]
   
   summary.vesper$DI.ASY.C.M[y]= summary.vesper$DI.C.M[y] - summary.vesper$DI.C.M[x]
   summary.vesper$DI.ASY.C.M[x]= summary.vesper$DI.C.M[x] - summary.vesper$DI.C.M[y]
   
-  summary.vesper$DI.ASY.C.SD[y]= summary.vesper$DI.C.SD[y] - summary.vesper$DI.C.SD[x]
-  summary.vesper$DI.ASY.C.SD[x]= summary.vesper$DI.C.SD[x] - summary.vesper$DI.C.SD[y]
+  
   
   summary.vesper$DI.ASY.I.M[y]= summary.vesper$DI.I.M[y] - summary.vesper$DI.I.M[x]
-  summary.vesper$DI.ASY.I.SD[x]= summary.vesper$DI.I.SD[x] - summary.vesper$DI.I.SD[y]
   
   
   
@@ -385,5 +369,9 @@ cor.test(summary.vesper$IN.C.M, summary.vesper$DI.C.M, method = c("pearson"))
 DF.DU<- summary.vesper[, c(8,9,20)]
 pcor(DF.DU, method="pearson")
 
-DF.DI<- summary.vesper[, c(14,15,26)]
+DF.DI<- summary.vesper[, c(14,15,25)]
 pcor(DF.DI, method="pearson")
+
+write.csv(summary.vesper, "summary_vesper.csv")
+write.csv(DF.DU, "Unintentional_PartialCorrel")
+write.csv(DF.DI, "Intentional_PartialCorrel")
